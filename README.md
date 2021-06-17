@@ -1,3 +1,6 @@
+# Attention
+This node version has been archived. Please check the current Master based on Substrate 3.0 Framework.
+
 # Bitg
 
 Implementation of a https://bitg.org node in Rust based on the Substrate framework.
