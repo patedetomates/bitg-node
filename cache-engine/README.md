@@ -46,7 +46,7 @@ to reflect your database configuration.
 The Bitgreen node run locally.  
 Execute from the command line:  
 ```sh
-./bit-blockchain-crawler.sh
+./bitg-blockchain-crawler.sh
 ```
  
  To process the past blocks the node should run in "archive" mode by the additional the parameter:  
