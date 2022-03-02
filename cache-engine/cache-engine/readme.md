@@ -10,7 +10,7 @@ npm install
 #### Database
 **node-pg-migrate** package is being used for `postgresql` migrations.
 
-To run migrations for this project run the command underneath. It will create all necessary tables and handle configuration.
+Run migrations for this project with the following commands. It will create all necessary tables and configuration.
 ```
 npm run migrate up
 ```
