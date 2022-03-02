@@ -1,5 +1,5 @@
-# API Documentation
-Once you serve API via command `npm run api`, API endpoint will be available at **localhost:port**, where **port** is previously defined in `.env` file. Default port: **3000**
+# Bitgreen API Documentation
+Serve API via command `npm run api`, API endpoint will be available at **localhost:port**, where **port** is defined in `.env` file. Default port: **3000**
 
 ---
 
