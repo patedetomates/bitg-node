@@ -45,6 +45,16 @@ apt install postgresql
 echo "Postgresql install successful"
 echo 
 
+# generate random secure password (15 characters)
+password=$(tr -dc 'A-Za-z0-9!"#$%&'\''()*+,-./:;<=>?@[\]^_`{|}~' </dev/urandom | head -c 15);
+partA="ALTER USER postgres WITH PASSWORD '"
+partB="';"
+sqlString=$partA+=$password+=$partB
+# echo $sqlString
+
+# set postgres password
+sudo -u postgres psql -c $sqlString
+
 echo "The Bitgreen installer will now open you environment file. Please input your relevant settings."
 read -n 1 -s -r -p "Press any key to continue."
 cp env.example .env
@@ -58,12 +68,16 @@ echo '# postgresql config'>>.env
 echo 'PGHOST=localhost'>>.env
 echo 'PGUSER=postgresql'>>.env
 echo 'PGDATABASE=cache-engine'>>.env
-PGPASSWORD=
-PGPORT=5432
-# rpc node provider
-RPC_PROVIDER=ws://127.0.0.1:9944
-# api endpoint port
-API_PORT=3000
+echo "PGPASSWORD="+=$password>>.env
+echo 'PGPORT=5432'>>.env
+echo '# rpc node provider'>>.env
+echo 'RPC_PROVIDER=ws://127.0.0.1:9944'>>.env
+echo '# api endpoint port'>>.env
+echo 'API_PORT=3000'>>.env
+
+# clear password from environment variable after use
+password="void"
+sqlString="void"
 
 # configure Postgres
 echo "configuring Postres"
