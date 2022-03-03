@@ -1,6 +1,6 @@
 # welcome info 
 echo "*** Welcome to the Bitgreen Cache Server Installer ***"
-echo "This will configure your server to cache the Bitgreen blockchain data in a local Postgres database and serrve the data via public API"
+echo "This will configure your server to cache the Bitgreen blockchain data in a local Postgresql database and serve the data via public API"
 echo 
 
 read -n 1 -s -r -p "Press any key to continue"
