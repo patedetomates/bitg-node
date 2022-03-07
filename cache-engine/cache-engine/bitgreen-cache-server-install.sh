@@ -11,6 +11,12 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+# set hostname
+echo "Enter your desired hostname: "
+read input_name
+echo "You entered: ${input_name}!"
+hostnamectl set-hostname $input_name 
+
 # install Rust
 echo "installing Rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -55,10 +61,11 @@ sqlString=$partA+=$password+=$partB
 # set postgres password
 sudo -u postgres psql -c $sqlString
 
-echo "The Bitgreen installer will now open you environment file. Please input your relevant settings."
+# PROMPT OR ALL RELEVANT INFO!!
+echo "The Bitgreen installer will now open your environment file. Please input your relevant settings."
 read -n 1 -s -r -p "Press any key to continue."
 cp env.example .env
-nano .env
+# nano .env
 
 cat .env
 >.env
@@ -99,9 +106,7 @@ echo "Installation complete. Your Bitgreen node is up and running."
 echo "Our bits are greener :)"
 
 :'
-echo "Enter Your Name: "
-read input_name
-echo "Welcome ${input_name}!"
+
 
 while true; do
     read -p "Is this server a master or a slave? (if unsure, select master)" yn
