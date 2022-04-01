@@ -6,7 +6,8 @@ const bodyParser = require('body-parser')
 const axios = require('axios').default
 
 /* modules */
-const db = require('./queries')
+const db = require('./src/queries')
+const methods = require('./src/methods')
 
 /* config */
 require('dotenv').config()
@@ -25,6 +26,10 @@ const mainLoop = async () => {
         res.send('Hello from BitGreen!');
     });
 
+    app.get('/get-block', methods.getBlock)
+
+    app.get('/analyze-data', db.getAnalyzeData)
+
     app.get('/transactions', db.getTransactions)
     app.get('/transaction', db.getTransaction)
 
@@ -42,6 +47,9 @@ const mainLoop = async () => {
     app.get('/impact_actions/approval_requests/auditors', db.getImpactActionsApprovalRequestsAuditors)
     app.get('/impact_actions/approval_requests/auditors/votes', db.getImpactActionsApprovalRequestsAuditorsVotes)
 
+    app.get('/vcu/authorized_accounts', db.getVcuAuthorizedAccounts)
+    app.get('/vcu/assets_generating', db.getVcuAssetsGenerating)
+
     /* serve api */
     let server = app.listen(port, function () {
         console.log(`Server is listening on port ${port}.`)
@@ -49,4 +57,4 @@ const mainLoop = async () => {
 }
 
 // run main function
-mainLoop();
+mainLoop().catch(console.error)

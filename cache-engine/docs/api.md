@@ -150,4 +150,24 @@ http://localhost:3000/impact_actions/approval_requests/auditors/votes
 approval_request_id: approval request id
 ```
 
+## Analyze Data
+Returns all possible sections/methods fetched from a chain.
+```
+http://localhost:3000/analyze-data
+```
+#### Params:
+```
+section: name of section to search for (optional)
+```
+
+## Get Block Data
+Get block data directly from a chain.
+```
+http://localhost:3000/get-block
+```
+#### Params:
+```
+block_number: block number to fetch
+```
+
 ---
